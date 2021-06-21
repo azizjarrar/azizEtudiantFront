@@ -1,0 +1,131 @@
+
+    /***/
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+.Container{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 15616165;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y:scroll;
+    overflow:hidden;
+    transform-style: preserve-3d; 
+
+    .formContainer{
+        position: relative;
+        background-color: white;
+        border-radius: 5px;
+        padding: 30px;
+        animation-name: show;
+        animation-fill-mode: forwards;
+        animation-duration: 0.5s;
+        button{
+            background-color:#1976d2 ;
+            color: white;
+            width: 80%;
+            height: 55px;
+            margin-top: 20px;
+            transform: translateX(-50%);
+            left: 50%;
+            
+        }
+        form{
+
+            display: flex;
+            flex-direction: row;
+            width: 600px;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            .left{
+                width: 260px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .right{
+                width: 260px;
+                display: flex;
+                align-items: center;
+
+                flex-direction: column;
+                gap: 20px;
+
+            }
+   
+        }
+    }
+}
+.header{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.goToSingIn{
+    width: 100%;
+    margin-top: 20px;
+    p{
+        text-align: center;
+        font-size: 1.3rem;
+        font-family: 'Source Sans Pro', sans-serif;
+        span{
+            color: #1976d2 ;
+            cursor: pointer;
+        }
+    }
+}
+
+.close{
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover{
+        height: 60px;
+        width: 60px;
+    }
+    &::after{
+        content: "";
+        width: 3px;
+        height: 25px;
+        background-color: black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) rotate(45deg);
+
+    }
+    &::before{
+        content: "";
+        width: 3px;
+        height: 25px;
+        background-color: black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        
+        transform: translate(-50%,-50%) rotate(-45deg);
+    }
+}
+@keyframes show {
+    from{
+        transform:perspective(1000px) translateZ(-150px);
+    }
+    to{
+        transform:perspective(1000px) translateZ(0px);
+
+    }
+}

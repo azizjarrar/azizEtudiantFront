@@ -1,0 +1,190 @@
+.bodyContainer{
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+}
+.container{
+    position: relative;
+    height: calc(100vh - 65px);
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-position: center center; /* Center the image */
+    background-attachment: fixed;
+
+    z-index: 9;
+    &::after{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color:rgba(0,0,0,0.5);
+        
+    }
+}
+.title{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h1{
+        color: white;
+        background-color: transparent;
+        max-width: 60%;
+        font-size: 5rem;
+    }
+    h3{
+        max-width: 60%;
+        color: white;
+        font-family: sans-serif;
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+.arrowDown{
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-name: dropDown;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    cursor: pointer;
+    img{
+        height: 60px;
+        width: 60px;
+    }
+
+}
+@keyframes dropDown {
+        0%{transform: translate(0px,0px);}
+        50%{transform: translate(0px,100px)}
+        100%{transform: translate(0px,0px)}
+}
+
+.listOfUniversities{
+    position: relative;
+    padding: 30px;
+    width: 100%;
+    height: auto;
+    border-top: 5px solid #1976d2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    .listOfUniversitiesContainer{
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        min-height: 700px;
+    }
+}
+.header{
+    position: relative;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1{
+        &:after{
+            content: "";
+            position: absolute;
+            bottom: 0%;
+            left: 0;
+            height: 3px;
+            width: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1976d2;
+        }
+    }
+}
+.navsearchForUniversiti{
+    position: relative;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    .selectContainer{
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-around;
+        width: 40%;
+        h1{
+            font-size: 1.5rem;
+        }
+        .selectItem{
+            position: relative;
+            width: 60%;
+   
+
+        }
+    }
+    
+}
+.description{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: auto;
+    border-bottom: 1px solid   #1976d2;
+    .descriptionText{
+        width: 40%;
+    }
+
+}
+.lineDesign1{
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    background-color: #1976d2;
+    transform: rotate(-45deg) translateY(30%);
+    bottom: 0;
+    right: 20%;
+}
+.lineDesign2{
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    background-color: #1976d2;
+    transform: rotate(-45deg) translateY(35%);
+    bottom: 0;
+    right: 30%;
+}
+.lineDesign3{
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    background-color: #1976d2;
+    transform: rotate(45deg) translateY(30%);
+    bottom: 0;
+    left: 20%;
+}
+.lineDesign4{
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    background-color: #1976d2;
+    transform: rotate(45deg) translateY(35%);
+    bottom: 0;
+    left: 30%;
+}
