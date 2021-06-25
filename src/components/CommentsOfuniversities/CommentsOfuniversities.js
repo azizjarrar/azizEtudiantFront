@@ -57,7 +57,7 @@ const CommentsOfuniversities = () => {
             <Button  onClick={e=>{addComment()}} variant="contained" color="#f88za">Add Comment</Button>
             </div>}
             <div className={style.review}>
-                {comments.map(e=><Comments  owner={e.owner} id_comment={e.id_comment} userName={e.firstname  + " " + e.lastname} comment={e.description}></Comments>).reverse()}
+                {comments.map(e=><Comments  date={e.date} owner={e.owner} id_comment={e.id_comment} userName={e.firstname  + " " + e.lastname} comment={e.description}></Comments>).reverse()}
                
 
             </div>

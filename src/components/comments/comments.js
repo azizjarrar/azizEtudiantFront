@@ -15,6 +15,8 @@ const Comments = (props) => {
     return (
         <div className={style.container}>
             <div className={style.userName}><h3>{props.userName}</h3></div>
+            <div className={style.date}><p>{props.date.slice(0,10)} {props.date.slice(12,19)}</p></div>
+
             <div className={style.comment}><p>{props.comment}</p></div>
             {localStorage.getItem("id_etud")==props.owner&&localStorage.getItem("token")!=undefined&&<div className={style.delete} onClick={()=>{openDelte()}}>&hellip;{deletee&&<div onClick={()=>{deleteCommentsFn()}} className={style.deletecss}><h4>Delete</h4></div>}</div>}         
         </div>

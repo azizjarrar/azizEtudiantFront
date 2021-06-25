@@ -10,15 +10,12 @@ import {getmetiers,getuniversities,getspecialites} from '../../services/universi
  const Home = ()=>{
     const [optionsOne,setOptionsOne]=React.useState([])
     const [optionsTwo,setOptionsTwo]=React.useState([])
-
     const [pickedmetie,setPickedmetie]=React.useState(()=>null)
     const [pickedspecialites,setpickedspecialites]=React.useState(()=>null)
     const [universities,setUniversities]=React.useState([])
-
-
     const [descmetie,setmetie]=React.useState("")
     const [descspecialites,setspecialites]=React.useState()
-
+    //kif componenetdidmount
     React.useEffect(()=>{
         getmetiers().then(data=>{
             setOptionsOne(data.data.data.map((e=>{
@@ -26,6 +23,13 @@ import {getmetiers,getuniversities,getspecialites} from '../../services/universi
             }))) 
         })
     },[])
+    React.useEffect(()=>{
+        getspecialites({metier_id:pickedmetie}).then(data=>{
+            setOptionsTwo([...data.data.data.map((e=>{
+                return {value:e.id,label:e.nom,desc:e.description}
+            }))])
+        })
+    },[pickedmetie])
     const pickedMetiesFn=(e)=>{
         setPickedmetie(e.value)
         setmetie(optionsOne.filter(data=>data.value==e.value)[0].desc)
@@ -34,15 +38,7 @@ import {getmetiers,getuniversities,getspecialites} from '../../services/universi
         setpickedspecialites(e.value)
         setspecialites(optionsTwo.filter(data=>data.value==e.value)[0].desc)
     }
-    React.useEffect(()=>{
-        getspecialites({metier_id:pickedmetie}).then(data=>{
-            setOptionsTwo([...data.data.data.map((e=>{
-                return {value:e.id,label:e.nom,desc:e.description}
-            }))])
-            
-        })
 
-    },[pickedmetie])
     React.useEffect(()=>{
         getuniversities({specialites:pickedspecialites}).then(data=>{
             setUniversities([...data.data.data])       
@@ -71,13 +67,13 @@ import {getmetiers,getuniversities,getspecialites} from '../../services/universi
         <div className={style.navsearchForUniversiti}>
         <div className={style.selectContainer}><h1>metiers</h1>
             <div  className={style.selectItem}>
-                <Select    onChange={(e)=>{pickedMetiesFn(e)}} instanceId={"idunique"} id={"gzegzegze"} options={optionsOne} />
+                <Select    onChange={(e)=>{pickedMetiesFn(e)}} instanceId={"idunique"} id={"a2"} options={optionsOne} />
                 
             </div>
         </div>
         {pickedmetie!=null&&<div className={style.selectContainer}><h1>specialites</h1>
             <div   className={style.selectItem}>
-                <Select    onChange={(e)=>{pickedspecialitesFn(e)}} instanceId={"idunique"} id={"gzegzegze"} options={optionsTwo}/>
+                <Select    onChange={(e)=>{pickedspecialitesFn(e)}} instanceId={"idunique"} id={"a1"} options={optionsTwo}/>
             </div>
         </div>}
 

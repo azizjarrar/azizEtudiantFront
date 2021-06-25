@@ -12,7 +12,6 @@ const Singin = (props) => {
 
   const [authData,setAuthData]=React.useState({})
   const changeHandler=(e)=>{
-    console.log(e.target.name)
     const {name,value}=e.target
     setAuthData(e=>{
       return {...e,[name]:value}
@@ -44,11 +43,10 @@ const Singin = (props) => {
                         <TextField required id="filled-required" name="cin" onChange={(e)=>{changeHandler(e)}} label="cin" defaultValue=""  variant="outlined"/>
                         <TextField required id="filled-required" name="password" onChange={(e)=>{changeHandler(e)}}  type="password" label="password" defaultValue=""  variant="outlined"/>
                         <Button variant="contained" color="#f88za" onClick={() => singinApi()}>Sing In</Button>
-
                 </form>
                 <div className={style.goToSingUp}>
-                    <p>you don't have account go  now <span>Sing Up</span>  Now</p>
-                    </div>
+                    <p>you don't have account go  now <span onClick={()=>props.openSingUp()}>Sing Up</span>  Now</p>
+                </div>
         </div>
     </div>
     )

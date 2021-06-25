@@ -14,17 +14,19 @@ const NavBar = (props) => {
     const [currentPage,setCurrentPage]=React.useState(null)
     const closeFn=()=>{
         setCurrentPage(null)
-        console.log("close")
     }
     const openPage=(page)=>{
         setCurrentPage(page)
-
     }
-    React.useEffect(()=>{
-        console.log(currentPage)
-    },[currentPage])
+
     function GoTo() {
         history.push("/");
+      }
+      const openSingInFn=()=>{
+        setCurrentPage("SingIn")
+      }
+      const openSingUpFn=()=>{
+        setCurrentPage("SingUp")
       }
       if(localStorage.getItem("token") != undefined){
         return (
@@ -34,11 +36,9 @@ const NavBar = (props) => {
                     <ul>
                         <Link style={{ textDecoration: 'none' ,color:"black"}} to="/Cartedesejour"><li >Carte de séjour</li></Link>
                         <Link style={{ textDecoration: 'none' ,color:"black"}} to="/profile"><li >Profile</li></Link>
-                        <li onClick={()=>{localStorage.removeItem("token");window.location.reload();}}>Log Out</li>
-
+                        <li onClick={()=>{localStorage.removeItem("token");history.push("/");window.location.reload();}}>Log Out</li>
                     </ul>
                 </div>
-
             </nav>
             
         )
@@ -49,11 +49,11 @@ const NavBar = (props) => {
                 <div className={style.connexion}>
                     <ul>
                         <li onClick={()=>openPage("SingIn")}>Sing In</li>
-                        <li onClick={()=>openPage("SingUp")}>Sing Up</li>
+                        <li onClick={()=>openPage("SingUp")} >Sing Up</li>
                     </ul>
                 </div>
-               {currentPage=="SingUp"&&<SingUp  close={()=>closeFn()}/>}
-               {currentPage=="SingIn"&&<SingIn  close={()=>closeFn()}/>}
+               {currentPage=="SingUp"&&<SingUp openSingIn={openSingInFn} close={()=>closeFn()}/>}
+               {currentPage=="SingIn"&&<SingIn openSingUp={openSingUpFn} close={()=>closeFn()}/>}
             </nav>
             
         )

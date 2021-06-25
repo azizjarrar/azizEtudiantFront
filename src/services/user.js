@@ -12,4 +12,7 @@ const singUpCall=(data)=>{
 const getUserData=(token)=>{
   return axios.post(API_URL+"getUserData",{},{ headers: {Authorization: 'Bearer ' + token }})
 }
-export {getUserData,singin,singUpCall};
+const updateUserInfo=(data)=>{
+  return axios.post(API_URL+"updateUserInfo",{...data},{ headers: {Authorization: 'Bearer ' + localStorage.getItem("token") }})
+}
+export {updateUserInfo,getUserData,singin,singUpCall};
